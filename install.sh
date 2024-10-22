@@ -9,12 +9,6 @@ brew tap Homebrew/bundle
 # Install Brewfile
 brew bundle install
 
-# Install Homebrew formulae
-source brew.sh
-
-# Install node packages
-source node.sh
-
 # Set up symlinks using stow
 source symlinks.sh
 
