@@ -1,3 +1,5 @@
+local builtin = require('telescope.builtin')
+
 vim.opt.smartindent = true
 vim.opt.tabstop = 4
 
@@ -12,5 +14,5 @@ vim.api.nvim_set_keymap("i", "<Tab>", 'copilot#Accept("<Tab>")', { silent = true
 --
 vim.keymap.set('n', '<leader>fs', function()
     builtin.grep_string({ search = vim.fn.input("Grep > ") });
-end)
+end, { desc = "Search for string" })
 
