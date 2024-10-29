@@ -22,7 +22,7 @@ ZSH_THEME="blinks"
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 
-# Uncomment the following line to use hyphen-insensitive completion.
+# Uncomment the following line to use hyphen-insensitive completion. o
 # Case-sensitive completion must be off. _ and - will be interchangeable.
 # HYPHEN_INSENSITIVE="true"
 
@@ -110,6 +110,9 @@ alias mkdir="mkdir -pv"
 alias zshconfig="code ~/.zshrc"
 alias ohmyzsh="code ~/.oh-my-zsh"
 alias reload="source ~/.zshrc"
+
+# .dotfiles repository
+alias dotfiles="nvim ~/.dotfiles"
 
 # tmux
 alias start-tmux="tmuxinator monitor"

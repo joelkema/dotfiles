@@ -2,4 +2,23 @@ import:
   - ~/.config/alacritty/themes/themes/gruvbox_material_medium_dark.yaml
 
 font:
-  size: 18
+  normal:
+    family: "NotoMono Nerd Font Mono" # Nerd Font name
+    style: Regular
+  bold:
+    family: "NotoMono Nerd Font Mono" # Nerd Font name
+    style: Bold
+  italic:
+    family: "NotoMono Nerd Font Mono" # Nerd Font name
+    style: Italic
+  bold_italic:
+    family: "NotoMono Nerd Font Mono" # Nerd Font name
+    style: Bold Italic
+
+  size: 18.0 # Adjust size as needed
+  offset:
+    x: 0
+    y: 0
+  glyph_offset:
+    x: 0
+    y: 0
