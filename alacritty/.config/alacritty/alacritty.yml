@@ -1,6 +1,10 @@
 import:
   - ~/.config/alacritty/themes/themes/gruvbox_material_medium_dark.yaml
-
+  
+window:
+  dimensions:
+    columns: 190
+    lines: 45
 font:
   normal:
     family: "NotoMono Nerd Font Mono" # Nerd Font name
@@ -22,3 +26,4 @@ font:
   glyph_offset:
     x: 0
     y: 0
+

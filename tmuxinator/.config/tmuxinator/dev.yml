@@ -1,0 +1,14 @@
+name: dev
+root: ~/
+
+windows:
+  - vpn:
+      layout: even-horizontal
+      panes:
+        - start-vpn
+        - start-server
+  - dev:
+      layout: even-horizontal
+      panes:
+        - ac && nvim .
+

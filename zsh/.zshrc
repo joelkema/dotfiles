@@ -178,3 +178,6 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 # go
 export GOPATH="/Users/p295855/go"
 export PATH="$GOPATH/bin:$PATH"
+
+# tmux-sessionizer
+export PATH="$HOME/.dotfiles/bin:$PATH"
