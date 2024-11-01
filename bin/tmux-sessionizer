@@ -1,11 +1,25 @@
 #!/usr/bin/env zsh
 
+switch_to() {
+    if [[ -z $TMUX ]]; then
+        tmux attach-session -t $1
+    else
+        tmux switch-client -t $1
+    fi
+}
+
+has_session() {
+    tmux list-sessions | grep -q "^$1:"
+}
+
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
-	foo=$(find ~/git/anwb -mindepth 1 -maxdepth 5 -type d -name node_modules -prune -o -type d -print)
+	foo=$(find ~/git/anwb/it-kanalen/car/car-star/frontend -mindepth 1 -maxdepth 1) 
+	foo+="\n"
+	foo+=$(find ~/git/personal -mindepth 1 -maxdepth 1) 
 	foo+="\n$HOME/.dotfiles"
-	foo+="\n$HOME/git"
+	foo+="\n$HOME/.config"
 	foo+="\n$HOME/scratch"
 	foo+="\n$HOME/vpn"
 	selected=$(echo -e $foo | fzf)
@@ -23,8 +37,9 @@ if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
     exit 0
 fi
 
-if ! tmux has-session -t=$selected_name 2> /dev/null; then
+
+if ! has_session $selected_name; then
     tmux new-session -ds $selected_name -c $selected
 fi
 
-tmux switch-client -t $selected_name
+switch_to $selected_name
