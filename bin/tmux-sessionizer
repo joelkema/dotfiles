@@ -24,6 +24,7 @@ else
 	foo+="\n$HOME/.config"
 	foo+="\n$HOME/scratch"
 	foo+="\n$HOME/vpn"
+	foo+="\n$HOME/Downloads"
 	selected=$(echo -e $foo | fzf)
 fi
 
