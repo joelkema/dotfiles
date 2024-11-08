@@ -1,0 +1,34 @@
+
+[font]
+size = 20.0
+
+[font.bold]
+family = "NotoMono Nerd Font Mono"
+style = "Bold"
+
+[font.bold_italic]
+family = "NotoMono Nerd Font Mono"
+style = "Bold Italic"
+
+[font.glyph_offset]
+x = 0
+y = 0
+
+[font.italic]
+family = "NotoMono Nerd Font Mono"
+style = "Italic"
+
+[font.normal]
+family = "NotoMono Nerd Font Mono"
+style = "Regular"
+
+[font.offset]
+x = 0
+y = 0
+
+[window.dimensions]
+columns = 210
+lines = 65
+
+[general]
+import = ["/Users/jkema/.config/alacritty/themes/themes/gruvbox_material_medium_dark.toml"]

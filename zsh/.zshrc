@@ -1,7 +1,7 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
-# Path to your oh-my-zsh installation.
+# Path to your oh-my-zsh installation. 
 export ZSH="$HOME/.oh-my-zsh"
 
 # Default editor  
@@ -74,7 +74,7 @@ ZSH_THEME="blinks"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git ssh-agent vscode)
+plugins=(git ssh-agent)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -113,21 +113,10 @@ alias ohmyzsh="code ~/.oh-my-zsh"
 alias reload="source ~/.zshrc"
 
 # .dotfiles repository
-alias dotfiles="nvim ~/.dotfiles"
-
-# tmux
-alias start-tmux="tmuxinator monitor"
+alias dotfiles="nvim ~/dotfiles"
 
 # chrome
 alias cchrome='/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --user-data-dir="/tmp/chrome_dev_session" --disable-local-storage'
-
-# anwb proxy settings
-# export http_proxy=http://proxy.anwb.local:8080
-# export https_proxy=${http_proxy}
-# export HTTP_PROXY=${http_proxy}
-# export HTTPS_PROXY=${http_proxy}
-# export no_proxy=localhost,127.0.0.*,*.anwb.local,10.*,172.*,192.*,*.vpce.amazonaws.com
-# export NO_PROXY=${no_proxy}
 
 # anwb-connect
 alias start-server="~/git/anwb/it-kanalen/app-center/shared/anwb-openconnect; python3 -m http.server 8081"
@@ -138,20 +127,12 @@ alias start-vpn="sh ~/git/anwb/it-kanalen/app-center/shared/anwb-openconnect/anw
 
 
 # anwb repositories
-alias snfcar="~/git/anwb/it-kanalen/car/car-star/frontend/search-and-filter-cars"
-alias tns="~/git/anwb/it-kanalen/car/car-star/frontend/tests-and-specifications"
-alias kt="~/git/anwb/it-kanalen/car/car-star/frontend/car-calculators"
-alias ac="~/git/anwb/it-kanalen/car/car-star/frontend/auto-centraal"
-alias plein="~/git/anwb/it-kanalen/car/car-star/frontend/auto-plein"
-alias expertplatform="~/git/anwb/traffic/frontend/experts-platform"
-alias expertfe="~/git/anwb/webcare/experts-frontend"
+alias ac="~/work/auto-centraal"
 
-# anwb-fe repositories
-alias chapter="~/git/anwb-fe/chapter/chapter"
 
 # personal repositories
-alias personal="~/git/personal"
-alias aoc="~/git/personal/advent-of-code"
+alias personal="~/personal"
+alias aoc="~/personal/advent-of-code"
 
 # alias air='~/.air'
 
@@ -181,4 +162,4 @@ export GOPATH="/Users/p295855/go"
 export PATH="$GOPATH/bin:$PATH"
 
 # tmux-sessionizer
-export PATH="$HOME/.dotfiles/bin:$PATH"
+export PATH="$HOME/dotfiles/bin:$PATH"
