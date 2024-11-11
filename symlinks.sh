@@ -2,5 +2,5 @@
 
 for d in `ls -d */`;
 do
-    ( stow --restow $d )
+    ( stow --restow --adopt $d )
 done
