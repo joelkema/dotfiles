@@ -19,6 +19,7 @@ else
 	foo+="\n"
 	foo+=$(find ~/work -mindepth 1 -maxdepth 1) 
 	foo+="\n$HOME/dotfiles"
+	foo+="\n$HOME/.ssh"
 	foo+="\n$HOME/.config"
 	foo+="\n$HOME/scratch"
 	foo+="\n$HOME/vpn"

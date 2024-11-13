@@ -115,23 +115,18 @@ alias reload="source ~/.zshrc"
 # .dotfiles repository
 alias dotfiles="nvim ~/dotfiles"
 
+alias v='nvim' # default Neovim config
+alias vk='NVIM_APPNAME=nvim-kickstart nvim' # Kickstart
+
 # chrome
 alias cchrome='/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --user-data-dir="/tmp/chrome_dev_session" --disable-local-storage'
-
-# anwb-connect
-alias start-server="~/git/anwb/it-kanalen/app-center/shared/anwb-openconnect; python3 -m http.server 8081"
-alias start-vpn="sh ~/git/anwb/it-kanalen/app-center/shared/anwb-openconnect/anwb-openconnect.sh"
-# alias start-server="~/git/VPN/connect.sh"
-# alias start-vpn="sh ~/VPN/connect.sh"
-# alias disconnect-vpn="sh ~/VPN/disconnect.sh"
-
 
 # anwb repositories
 alias ac="~/work/auto-centraal"
 
-
 # personal repositories
 alias personal="~/personal"
+alias work="~/work"
 alias aoc="~/personal/advent-of-code"
 
 # alias air='~/.air'
