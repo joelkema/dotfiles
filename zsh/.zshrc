@@ -5,8 +5,8 @@
 export ZSH="$HOME/.oh-my-zsh"
 
 # Default editor  
-export VISUAL=nvim
-export EDITOR="$VISUAL"
+export VISUAL="nvim"
+export EDITOR=$VISUAL
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
