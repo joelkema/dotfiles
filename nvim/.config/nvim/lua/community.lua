@@ -7,5 +7,6 @@ return {
   "AstroNvim/astrocommunity",
   -- { import = "astrocommunity.pack.lua" }
   { import = "astrocommunity.colorscheme.gruvbox-nvim" },
+{ import = "astrocommunity.recipes.disable-tabline" },
   -- import/override with your plugins folder
 }

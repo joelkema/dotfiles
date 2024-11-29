@@ -6,7 +6,8 @@ return {
       comments = true,
       folds = true,
       operations = false,
-    }
+    },
+    transparent_mode = true,
   }
 }
   
