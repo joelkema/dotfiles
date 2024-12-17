@@ -5,7 +5,7 @@
 ---@type LazySpec
 return {
   "AstroNvim/astrocommunity",
-  -- { import = "astrocommunity.pack.lua" }
+  { import = "astrocommunity.pack.vue" },
   { import = "astrocommunity.colorscheme.gruvbox-nvim" },
 { import = "astrocommunity.recipes.disable-tabline" },
   -- import/override with your plugins folder
