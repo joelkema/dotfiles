@@ -132,7 +132,7 @@ alias aoc="~/personal/advent-of-code"
 # alias air='~/.air'
 
 # pnpm
-export PNPM_HOME="/Users/p295855/Library/pnpm"
+export PNPM_HOME="$HOME/Library/pnpm"
 case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
   *) export PATH="$PNPM_HOME:$PATH" ;;
@@ -141,20 +141,6 @@ esac
 
 # always start neofetch on startup
 neofetch
-
-# bun completions
-[ -s "/Users/p295855/.bun/_bun" ] && source "/Users/p295855/.bun/_bun"
-
-# bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
-
-# templ
-# export PATH="$HOME/go/bin/:$PATH" 
-
-# go
-export GOPATH="/Users/p295855/go"
-export PATH="$GOPATH/bin:$PATH"
 
 # tmux-sessionizer
 export PATH="$HOME/dotfiles/bin:$PATH"
