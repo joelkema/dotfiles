@@ -26,9 +26,14 @@ style = "Regular"
 x = 0
 y = 0
 
+# [window]
+# opacity = 0.9
+# blur = true
+#
 [window.dimensions]
 columns = 210
 lines = 65
 
 [general]
-import = ["/Users/jkema/.config/alacritty/themes/themes/gruvbox_material_medium_dark.toml"]
+# import = ["/Users/jkema/.config/alacritty/themes/themes/gruvbox_material_medium_dark.toml"]
+import = ["~/.config/alacritty/catppuccin-mocha.toml"]
