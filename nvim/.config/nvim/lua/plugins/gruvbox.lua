@@ -7,7 +7,7 @@ return {
       folds = true,
       operations = false,
     },
-    transparent_mode = true,
+    -- transparent_mode = true,
   }
 }
   
