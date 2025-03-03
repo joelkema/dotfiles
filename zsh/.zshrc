@@ -142,5 +142,15 @@ esac
 # always start neofetch on startup
 neofetch
 
+# templ
+# export PATH="$HOME/go/bin/:$PATH" 
+
+# go
+export GOPATH="/Users/joelkema/go"
+export PATH="$GOPATH/bin:$PATH"
+
 # tmux-sessionizer
 export PATH="$HOME/dotfiles/bin:$PATH"
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/joelkema/.lmstudio/bin"
