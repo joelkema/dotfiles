@@ -121,6 +121,9 @@ alias vk='NVIM_APPNAME=nvim-kickstart nvim' # Kickstart
 # chrome
 alias cchrome='/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --user-data-dir="/tmp/chrome_dev_session" --disable-local-storage'
 
+# anwb repositories
+alias ac="~/work/auto-centraal"
+
 # personal repositories
 alias personal="~/personal"
 alias work="~/work"
