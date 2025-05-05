@@ -74,7 +74,11 @@ ZSH_THEME="blinks"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git ssh-agent)
+plugins=(git ssh-agent tmux)
+
+# all the ZSH_* variables for controlling oh-my-zsh behavior need to be set before initializing oh-my-zsh.
+# Auto start TMUX
+ZSH_TMUX_AUTOSTART=true
 
 source $ZSH/oh-my-zsh.sh
 
@@ -139,9 +143,6 @@ case ":$PATH:" in
 esac
 # pnpm end
 
-# always start neofetch on startup
-neofetch
-
 # templ
 # export PATH="$HOME/go/bin/:$PATH" 
 
@@ -154,3 +155,14 @@ export PATH="$HOME/dotfiles/bin:$PATH"
 
 # Added by LM Studio CLI (lms)
 export PATH="$PATH:/Users/joelkema/.lmstudio/bin"
+
+# Set up fzf key bindings
+source <(fzf --zsh)
+
+HISTFILE=~/.zsh_history
+HISTSIZE=10000
+SAVEHIST=10000
+setopt appendhistory
+
+# always start neofetch on startup
+neofetch

@@ -27,9 +27,9 @@ x = 0
 y = 0
 
 # [window]
-# opacity = 0.9
+# opacity = 0.5
 # blur = true
-#
+
 [window.dimensions]
 columns = 210
 lines = 65
