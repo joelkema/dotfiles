@@ -1,5 +1,14 @@
 #!/usr/bin/env zsh
 
+################################################################################
+#                           TMUX Sessionizer
+#
+#         The TMUX Sessionizer is a tool for creating or switching 
+#         sessions in tmux by (project / directory) names.
+#
+#
+################################################################################
+
 switch_to() {
     if [[ -z $TMUX ]]; then
         tmux attach-session -t $1

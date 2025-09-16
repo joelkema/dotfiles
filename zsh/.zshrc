@@ -121,6 +121,7 @@ alias dotfiles="nvim ~/dotfiles"
 
 alias v='nvim' # default Neovim config
 alias vk='NVIM_APPNAME=nvim-kickstart nvim' # Kickstart
+alias v2='NVIM_APPNAME=astronvim_v5 nvim'
 
 # chrome
 alias cchrome='/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --user-data-dir="/tmp/chrome_dev_session" --disable-local-storage'

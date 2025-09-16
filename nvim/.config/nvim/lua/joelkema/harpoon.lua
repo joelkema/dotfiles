@@ -1,11 +1,22 @@
-local harpoon = require('harpoon')
+local harpoon = require "harpoon"
 
-harpoon:setup({})
+harpoon:setup {}
 
-vim.keymap.set("n", "<leader>a", function() harpoon:list():add() end, { desc = "Add to harpoon list"})
+vim.keymap.set("n", "<leader>a", function() harpoon:list():add() end, { desc = "Add to harpoon list" })
 vim.keymap.set("n", "<C-j>", function() harpoon:list():select(1) end)
 vim.keymap.set("n", "<C-k>", function() harpoon:list():select(2) end)
 vim.keymap.set("n", "<C-l>", function() harpoon:list():select(3) end)
+
+-- vim.api.nvim_create_autocmd("BufReadPost", {
+--   callback = function()
+--     local filepath = vim.api.nvim_buf_get_name(0)
+--
+--     -- print("BufEnter: " .. filepath)
+--
+--     -- Only add real files (ignore help buffers, etc.)
+--     if vim.fn.filereadable(filepath) == 1 then harpoon:list():add { value = filepath } end
+--   end,
+-- })
 
 -- basic telescope configuration
 -- this is unused for now
@@ -44,5 +55,9 @@ vim.keymap.set("n", "<C-l>", function() harpoon:list():select(3) end)
 -- vim.keymap.set("n", "<leader>h", function() toggle_telescope(harpoon:list()) end,
 --     { desc = "Open harpoon window" })
 
-vim.keymap.set("n", "<leader>h", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end, { desc = "Open harpoon window" })
-
+vim.keymap.set(
+  "n",
+  "<leader>h",
+  function() harpoon.ui:toggle_quick_menu(harpoon:list()) end,
+  { desc = "Open harpoon window" }
+)
