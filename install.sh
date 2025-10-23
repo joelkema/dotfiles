@@ -5,6 +5,14 @@ if [ -z "${BASH_VERSION:-}" ]; then exec /usr/bin/env bash "$0" "$@"; fi
 set -Eeuo pipefail
 (set -o pipefail) 2>/dev/null || true
 
+# -------------------- flags --------------------
+DRY_RUN=false
+for arg in "$@"; do
+  case "$arg" in
+    -n|--dry-run) DRY_RUN=true ;;
+  esac
+done
+
 # -------------------- helpers --------------------
 has()        { command -v "$1" >/dev/null 2>&1; }
 is_macos()   { [ "$(uname -s)" = "Darwin" ]; }
@@ -19,15 +27,23 @@ step() { step_n=$((step_n+1)); printf "${BLUE}[ %d/%d ]${RESET} %s\n" "$step_n" 
 ok()   { printf "${GREEN}[ ok ]${RESET} %s\n" "$1"; }
 warn() { printf "${YELLOW}[ !! ]${RESET} %s\n" "$1"; }
 
+run() {
+  if $DRY_RUN; then
+    echo "  [dry-run] $*"
+  else
+    eval "$@"
+  fi
+}
+
 # -------------------- steps --------------------
 ensure_brew_macos() {
   step "Ensuring Homebrew (macOS)"
   if ! has brew; then
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-    eval "$(/opt/homebrew/bin/brew shellenv 2>/dev/null || /usr/local/bin/brew shellenv)"
+    run '/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"'
+    run 'eval "$(/opt/homebrew/bin/brew shellenv 2>/dev/null || /usr/local/bin/brew shellenv)"'
     ok "Homebrew installed"
   else
-    eval "$(brew shellenv)"
+    run 'eval "$(brew shellenv)"'
     ok "Homebrew already present"
   fi
 }
@@ -35,13 +51,14 @@ ensure_brew_macos() {
 apply_brewfile_macos() {
   step "Applying Brewfile (macOS)"
   if [[ -f Brewfile ]]; then
-    brew tap Homebrew/bundle || true
-    brew bundle install
+    run "brew tap Homebrew/bundle || true"
+    run "brew bundle install"
     ok "Brewfile installed"
   else
     warn "No Brewfile found; skipping brew bundle"
   fi
 }
+
 
 ensure_stow_any() {
   step "Ensuring GNU stow is installed"
@@ -52,18 +69,18 @@ ensure_stow_any() {
 
   if is_macos; then
     ensure_brew_macos
-    brew install stow
+    run "brew install stow"
     ok "Installed stow via Homebrew"
   elif is_alpine; then
-    sudo apk update
-    sudo apk add stow
+    run "sudo apk update"
+    run "sudo apk add stow"
     ok "Installed stow via apk"
   elif is_linux && has apt-get; then
-    sudo apt-get update -y
-    sudo apt-get install -y stow
+    run "sudo apt-get update -y"
+    run "sudo apt-get install -y stow"
     ok "Installed stow via apt"
   elif is_linux && (has dnf || has yum); then
-    if has dnf; then sudo dnf install -y stow; else sudo yum install -y stow; fi
+    run 'if has dnf; then sudo dnf install -y stow; else sudo yum install -y stow; fi'
     ok "Installed stow via dnf/yum"
   else
     warn "Unknown package manager; please install 'stow' manually and re-run"
@@ -96,20 +113,20 @@ configure_git_identity() {
   name="$(git config --global user.name || true)"
   email="$(git config --global user.email || true)"
   if [[ -z "$name" ]]; then
-    git config --global user.name "Joel Kema"
+    run 'git config --global user.name "Joel Kema"'
     ok "Set git user.name"
   else
     ok "git user.name already set to: $name"
   fi
   if [[ -z "$email" ]]; then
-    git config --global user.email "joelkema1988@gmail.com"
+    run 'git config --global user.email "joelkema1988@gmail.com"'
     ok "Set git user.email"
   else
     ok "git user.email already set to: $email"
   fi
 
   if is_wsl; then
-    git config --global core.autocrlf input || true
+    run "git config --global core.autocrlf input || true"
     ok "Configured git line endings for WSL"
   fi
 }
@@ -132,7 +149,7 @@ apply_symlinks_with_stow() {
   fi
   if [[ -f ./symlinks.sh ]]; then
     # shellcheck source=/dev/null
-    source ./symlinks.sh
+    run 'source ./symlinks.sh'
     ok "Symlinks applied"
   else
     warn "symlinks.sh not found; skipping"
@@ -155,8 +172,12 @@ ensure_default_shell_zsh() {
 reload_zshrc() {
   step "Reloading ~/.zshrc (if present)"
   if [[ -f "$HOME/.zshrc" ]]; then
-    zsh -ic "source ~/.zshrc" || true
-    ok "Reloaded ~/.zshrc"
+    run 'zsh -ic "source ~/.zshrc" || true'
+    if ! $DRY_RUN; then
+      ok "Reloaded ~/.zshrc"
+    else
+      ok "Would reload ~/.zshrc (dry-run)"
+    fi
   else
     warn "~/.zshrc not found; skipping"
   fi
@@ -164,22 +185,22 @@ reload_zshrc() {
 
 # -------------------- main (order of steps) --------------------
 main() {
+  if $DRY_RUN; then
+    printf "${YELLOW}*** Running in DRY-RUN mode — no changes will be made ***${RESET}\n\n"
+  fi
+
   step "Detecting OS"
   if is_macos; then
     ok "Detected macOS"
+    ensure_brew_macos
+    apply_brewfile_macos
   elif is_wsl; then
     ok "Detected WSL (Windows Subsystem for Linux)"
+    ensure_base_linux_wsl
   elif is_linux; then
     ok "Detected Linux"
   else
     warn "Unknown OS: $(uname -s)"
-  fi
-
-  if is_macos; then
-    ensure_brew_macos
-    apply_brewfile_macos
-  else
-    ensure_base_linux_wsl
   fi
 
   ensure_stow_any
