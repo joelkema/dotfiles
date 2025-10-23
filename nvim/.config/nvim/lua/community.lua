@@ -9,5 +9,7 @@ return {
   "AstroNvim/astrocommunity",
   { import = "astrocommunity.pack.lua" },
   { import = "astrocommunity.pack.vue" },
+  { import = "astrocommunity.docker.lazydocker" },
+
   -- import/override with your plugins folder
 }
