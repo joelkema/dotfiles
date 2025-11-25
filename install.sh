@@ -62,6 +62,7 @@ apply_brewfile_macos() {
 
 ensure_stow_any() {
   step "Ensuring GNU stow is installed"
+
   if has stow; then
     ok "stow already present"
     return
@@ -187,6 +188,12 @@ reload_zshrc() {
 main() {
   if $DRY_RUN; then
     printf "${YELLOW}*** Running in DRY-RUN mode — no changes will be made ***${RESET}\n\n"
+  fi
+
+  step "Check if whoami returns root or sudo"
+  if [[ $(whoami) == "root" ]]; then
+	  echo "This script must be run as an unpriviledged user with sudo access"
+	  exit 1
   fi
 
   step "Detecting OS"
