@@ -1,5 +1,3 @@
-if true then return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
-
 -- Customize Mason
 
 ---@type LazySpec
@@ -12,16 +10,20 @@ return {
       -- Make sure to use the names found in `:Mason`
       ensure_installed = {
         -- install language servers
-        "lua-language-server",
-
-        -- install formatters
-        "stylua",
-
-        -- install debuggers
-        "debugpy",
-
-        -- install any other package
-        "tree-sitter-cli",
+        -- "lua-language-server",
+        --
+        -- -- Language Servers
+        -- "typescript-language-server", -- TypeScript/JavaScript/React
+        -- "eslint-lsp", -- ESLint
+        -- "tailwindcss-language-server", -- Tailwind (optional)
+        -- "emmet-ls", -- HTML/JSX snippets
+        -- "json-lsp", -- JSON files
+        --
+        -- -- Formatters
+        -- "prettierd", -- Fast Prettier
+        --
+        -- -- Debugger
+        -- "js-debug-adapter", -- JavaScript/React debugging
       },
     },
   },

@@ -7,8 +7,11 @@
 ---@type LazySpec
 return {
   "AstroNvim/astrocommunity",
+  { import = "astrocommunity.pack.html-css" },
+  { import = "astrocommunity.pack.tailwindcss" },
+  { import = "astrocommunity.pack.prettier" },
   { import = "astrocommunity.pack.lua" },
-  { import = "astrocommunity.pack.vue" },
+  { import = "astrocommunity.pack.typescript" },
   { import = "astrocommunity.docker.lazydocker" },
 
   -- import/override with your plugins folder

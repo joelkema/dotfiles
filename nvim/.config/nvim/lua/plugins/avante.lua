@@ -27,8 +27,17 @@ return {
   opts = {
     ---@alias Provider "claude" | "openai" | "azure" | "gemini" | "cohere" | "copilot" | string
     ---@type Provider
-    provider = "lmstudio",
+    provider = "claude",
     providers = {
+      claude = {
+        endpoint = "https://api.anthropic.com",
+        model = "claude-sonnet-4-20250514",
+        timeout = 30000, -- Timeout in milliseconds
+        extra_request_body = {
+          temperature = 0.75,
+          max_tokens = 20480,
+        },
+      },
       lmstudio = {
         __inherited_from = "openai", -- reuse Avante's OpenAI provider
         endpoint = "http://localhost:1234/v1", -- LM Studio's local server base URL
