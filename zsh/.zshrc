@@ -7,6 +7,7 @@ export ZSH="$HOME/.oh-my-zsh"
 # Default editor  
 export VISUAL="nvim"
 export EDITOR=$VISUAL
+export GIT_EDITOR=$VISUAL
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -112,29 +113,29 @@ source $(brew --prefix nvm)/nvm.sh
 alias mkdir="mkdir -pv" 
 
 # Zsh configs
-alias zshconfig="code ~/.zshrc"
-alias ohmyzsh="code ~/.oh-my-zsh"
+alias zshconfig="v ~/.zshrc"
+alias ohmyzsh="v ~/.oh-my-zsh"
 alias reload="source ~/.zshrc"
 
 # .dotfiles repository
 alias dotfiles="nvim ~/dotfiles"
 
-alias v='nvim' # default Neovim config
-alias vk='NVIM_APPNAME=nvim-kickstart nvim' # Kickstart
+alias v='nvim .' # default Neovim config
+alias vk='NVIM_APPNAME=nvim-kickstart nvim .' # Kickstart
 alias v2='NVIM_APPNAME=astronvim_v5 nvim'
 
 # chrome
 alias cchrome='/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --user-data-dir="/tmp/chrome_dev_session" --disable-local-storage'
-
-# anwb repositories
-alias ac="~/work/auto-centraal"
 
 # personal repositories
 alias personal="~/personal"
 alias work="~/work"
 alias aoc="~/personal/advent-of-code"
 
-# alias air='~/.air'
+# sombrero
+alias car="cd ~/work/sombrero/packages/car/applications"
+alias traffic="cd ~/work/sombrero/packages/traffic/applications"
+
 
 # pnpm
 export PNPM_HOME="$HOME/Library/pnpm"
@@ -174,5 +175,13 @@ function y() {
 	rm -f -- "$tmp"
 }
 
+# Token required for sombrero
+export NPM_TOKEN="dGu0BNVIikro33dV6iZdLG86MQp1OjhqNgk.01.0z1m7rp7c"
+
 # always start neofetch on startup
 neofetch
+
+. "$HOME/.local/bin/env"
+
+# opencode
+export PATH=/Users/joel.kema/.opencode/bin:$PATH

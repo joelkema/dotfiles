@@ -1,0 +1,67 @@
+#!/bin/bash
+
+# sbr — start development environment in two tmux windows
+#
+# USAGE:
+#   sbr                                        → sbr:start + watch all @anwb/car-*
+#   sbr --debug                                → same, with Node.js inspector (chrome://inspect)
+#   sbr --reset                                → kill existing windows, pnpm clean + pnpm i, then sbr
+#   sbr --reset --debug                        → reset + debug
+#   sbr @anwb/car-information-applications     → watch specific package(s)
+#   sbr --debug @anwb/car-information-applications
+sbr() {
+  local debug=false
+  local reset=false
+  local car_args=()
+
+  while [[ $# -gt 0 ]]; do
+    case "$1" in
+      --debug) debug=true; shift ;;
+      --reset) reset=true; shift ;;
+      *) car_args+=("$1"); shift ;;
+    esac
+  done
+
+  local session
+  session=$(tmux display-message -p '#{session_name}' 2>/dev/null || echo "dev")
+
+  if $reset; then
+    tmux kill-window -t "$session:sbr" 2>/dev/null
+    tmux kill-window -t "$session:car" 2>/dev/null
+
+    echo "Resetting: running pnpm clean -a ..."
+    pnpm clean -a || { echo "pnpm clean failed"; return 1; }
+
+    echo "Installing: running pnpm i..."
+    pnpm i || { echo "pnpm i failed"; return 1; }
+  fi
+
+  # Window 1: main web app
+  local sbr_cmd="pnpm turbo @anwb/web#dev"
+
+  # Window 2: car package watcher (default: all @anwb/car-*, or specific packages)
+  local dev_cmd
+  if [ ${#car_args[@]} -eq 0 ]; then
+    dev_cmd="pnpm turbo dev --filter=\"@anwb/car-*\""
+  else
+    local filters=()
+    for f in "${car_args[@]}"; do
+      filters+=(--filter="$f")
+    done
+    dev_cmd="pnpm turbo dev ${filters[*]}"
+  fi
+
+  if $debug; then
+    sbr_cmd="NODE_OPTIONS='--inspect' $sbr_cmd"
+    dev_cmd="NODE_OPTIONS='--inspect' $dev_cmd"
+  fi
+
+  local w1 w2
+  w1=$(tmux new-window -t "$session" -n "sbr" -P -F '#{window_id}')
+  w2=$(tmux new-window -t "$session" -n "car" -P -F '#{window_id}')
+
+  tmux send-keys -t "$w1" "$sbr_cmd" Enter
+  tmux send-keys -t "$w2" "$dev_cmd" Enter
+}
+
+sbr "$@"

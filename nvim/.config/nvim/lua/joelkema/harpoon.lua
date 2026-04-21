@@ -55,9 +55,9 @@ vim.keymap.set("n", "<C-l>", function() harpoon:list():select(3) end)
 -- vim.keymap.set("n", "<leader>h", function() toggle_telescope(harpoon:list()) end,
 --     { desc = "Open harpoon window" })
 
-vim.keymap.set(
-  "n",
-  "<leader>h",
-  function() harpoon.ui:toggle_quick_menu(harpoon:list()) end,
-  { desc = "Open harpoon window" }
-)
+-- vim.keymap.set(
+--   "n",
+--   "<leader>h",
+--   function() harpoon.ui:toggle_quick_menu(harpoon:list()) end,
+--   { desc = "Open harpoon window" }
+-- )
