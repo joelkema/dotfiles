@@ -175,9 +175,6 @@ function y() {
 	rm -f -- "$tmp"
 }
 
-# Token required for sombrero
-export NPM_TOKEN="dGu0BNVIikro33dV6iZdLG86MQp1OjhqNgk.01.0z1m7rp7c"
-
 # always start neofetch on startup
 neofetch
 
