@@ -1,3 +1,5 @@
+if true then return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
+
 return {
   -- If you want neo-tree's file operations to work with LSP (updating imports, etc.), you can use a plugin like
   -- https://github.com/antosha417/nvim-lsp-file-operations:
