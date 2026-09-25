@@ -119,7 +119,12 @@ configure_git_identity() {
 install_oh_my_zsh() {
   step "Installing Oh My Zsh (if missing)"
   if [[ ! -d "$HOME/.oh-my-zsh" ]]; then
-    RUNZSH=no CHSH=no sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+    # KEEP_ZSHRC=yes stops the installer from creating/overwriting ~/.zshrc —
+    # stow owns that file (it's symlinked from zsh/.zshrc in this repo).
+    # Without it, on a fresh machine the installer writes its default
+    # .zshrc *before* stow runs, and `stow --adopt` then pulls that generic
+    # template back into the repo, clobbering the tracked config.
+    RUNZSH=no CHSH=no KEEP_ZSHRC=yes sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
     ok "Oh My Zsh installed"
   else
     ok "Oh My Zsh already installed"
@@ -143,15 +148,25 @@ apply_symlinks_with_stow() {
 
 ensure_default_shell_zsh() {
   step "Setting zsh as default shell (if not already)"
-  if [[ "${SHELL:-}" != *"/zsh" ]] && has zsh; then
-    if has chsh; then
-      chsh -s "$(command -v zsh)" && ok "Default shell set to zsh" || warn "chsh failed; set default shell manually"
-    else
-      warn "chsh not available; skipping default shell change"
-    fi
-  else
+  if [[ "${SHELL:-}" == *"/zsh" ]] || ! has zsh; then
     ok "zsh already default or zsh not installed"
+    return
   fi
+  if ! has chsh; then
+    warn "chsh not available; skipping default shell change"
+    return
+  fi
+
+  local zsh_path
+  zsh_path="$(command -v zsh)"
+  # Homebrew's zsh (/opt/homebrew/bin/zsh) isn't in /etc/shells by default,
+  # so chsh rejects it as a "non-standard shell" — add it first.
+  if ! grep -qxF "$zsh_path" /etc/shells; then
+    warn "$zsh_path not in /etc/shells; adding it (needs sudo)"
+    run "echo \"$zsh_path\" | sudo tee -a /etc/shells >/dev/null"
+  fi
+
+  run "chsh -s \"$zsh_path\"" && ok "Default shell set to zsh ($zsh_path)" || warn "chsh failed; set default shell manually"
 }
 
 reload_zshrc() {
