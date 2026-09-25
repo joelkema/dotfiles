@@ -106,7 +106,5 @@ cask "kitty"
 cask "microsoft-outlook"
 # GUI for streamlined Redis application development
 cask "redis-insight"
-# GPU-accelerated cross-platform terminal emulator and multiplexer
-cask "wezterm"
 uv "jiratui", with: ["textual==7.5.0"]
 npm "corepack"
