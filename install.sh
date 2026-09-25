@@ -14,26 +14,10 @@ for arg in "$@"; do
 done
 
 # -------------------- helpers --------------------
-has()        { command -v "$1" >/dev/null 2>&1; }
-is_macos()   { [ "$(uname -s)" = "Darwin" ]; }
-is_linux()   { [ "$(uname -s)" = "Linux" ]; }
-is_wsl()     { is_linux && grep -qiE 'microsoft|wsl' /proc/version 2>/dev/null; }
-is_alpine()  { is_linux && [ -f /etc/alpine-release ]; }
-is_ubuntu()  { is_linux && [ -r /etc/os-release ] && . /etc/os-release && [ "${ID:-}" = "ubuntu" ]; }
-
-BLUE='\033[1;34m'; GREEN='\033[1;32m'; YELLOW='\033[1;33m'; RESET='\033[0m'
-step_n=0; steps_total=8
-step() { step_n=$((step_n+1)); printf "${BLUE}[ %d/%d ]${RESET} %s\n" "$step_n" "$steps_total" "$1"; }
-ok()   { printf "${GREEN}[ ok ]${RESET} %s\n" "$1"; }
-warn() { printf "${YELLOW}[ !! ]${RESET} %s\n" "$1"; }
-
-run() {
-  if $DRY_RUN; then
-    echo "  [dry-run] $*"
-  else
-    eval "$@"
-  fi
-}
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+# shellcheck source=helpers.sh
+source "$SCRIPT_DIR/helpers.sh"
+steps_total=10
 
 # -------------------- steps --------------------
 ensure_brew_macos() {
