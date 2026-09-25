@@ -1,159 +1,112 @@
-tap "homebrew/bundle"
-tap "homebrew/services"
-tap "jesseduffield/lazygit"
-tap "koekeishiya/formulae"
-tap "mongodb/brew"
+tap "jetbrains/utils", "https://github.com/JetBrains/homebrew-utils"
 tap "nikitabobko/tap"
-tap "redis-stack/redis-stack"
+# Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
+# Resource monitor. C++ version and continuation of bashtop and bpytop
+brew "btop"
+# Cross-platform make
 brew "cmake"
-brew "python@3.13"
+# Defines a standard way of committing rules and communicating it
 brew "commitizen"
+# Pack, ship and run any application as a lightweight container
 brew "docker"
+# Simple, fast and user-friendly alternative to find
 brew "fd"
-brew "gnutls"
+# Play, record, convert, and stream select audio and video codecs
 brew "ffmpeg"
+# Command-line fuzzy finder written in Go
 brew "fzf"
+# GitHub command-line tool
 brew "gh"
+# Distributed revision control system
 brew "git"
+# Open-source GitLab command-line tool
+brew "glab"
+# GNU Transport Layer Security (TLS) Library
+brew "gnutls"
+# Open source programming language to build simple/reliable/efficient software
 brew "go"
+# Open-source build automation tool based on the Groovy and Kotlin DSL
+brew "gradle"
+# Improved top (interactive process viewer)
 brew "htop"
+# Tools and libraries to manipulate images in select formats
 brew "imagemagick"
+# Lightweight and flexible command-line JSON processor
 brew "jq"
+# Lazier way to manage everything docker
 brew "lazydocker"
+# Simple terminal UI for git commands
 brew "lazygit"
+# Implementation of the file(1) command
+brew "libmagic"
+# Next-gen compiler infrastructure
 brew "llvm"
+# Java-based project management
+brew "maven"
+# Hash utilities
 brew "md5sha1sum"
+# Fast, highly customisable system info script
 brew "neofetch"
+# Ambitious Vim-fork focused on extensibility and agility
 brew "neovim"
+# Manage multiple Node.js versions
 brew "nvm"
+# Open client for Cisco AnyConnect VPN
 brew "openconnect"
+# Fast, disk space efficient package manager
 brew "pnpm"
+# PDF rendering library (based on the xpdf-3.0 code base)
 brew "poppler"
+# Interpreted, interactive, object-oriented programming language
 brew "python@3.11"
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.13"
+# SVG rendering tool and library
 brew "resvg"
+# Search tool like grep and The Silver Searcher
 brew "ripgrep"
+# CLI proxy to minimize LLM token consumption
+brew "rtk"
+# 7-Zip is a file archiver with a high compression ratio
 brew "sevenzip"
+# Organize software neatly under a single directory tree (e.g. /usr/local)
 brew "stow"
+# Terminal multiplexer
 brew "tmux"
+# Manage complex tmux sessions easily
 brew "tmuxinator"
+# Vpnc-script replacement for easy and secure split-tunnel VPN setup
 brew "vpn-slice"
+# Internet file retriever
 brew "wget"
+# Yet Another Dotfiles Manager
 brew "yadm"
+# Blazing fast terminal file manager written in Rust, based on async I/O
 brew "yazi"
+# Shell extension to navigate your filesystem faster
 brew "zoxide"
-brew "koekeishiya/formulae/skhd"
-cask "aerospace"
+# UNIX shell (command interpreter)
+brew "zsh"
+# Official Language Server Protocol for the Kotlin language
+brew "jetbrains/utils/kotlin-lsp", trusted: true
+# GPU-accelerated terminal emulator
 cask "alacritty"
-cask "discord"
-cask "figma"
-cask "firefox"
-cask "font-0xproto-nerd-font"
-cask "font-3270-nerd-font"
-cask "font-agave-nerd-font"
-cask "font-anonymice-nerd-font"
-cask "font-arimo-nerd-font"
-cask "font-aurulent-sans-mono-nerd-font"
-cask "font-bigblue-terminal-nerd-font"
-cask "font-bitstream-vera-sans-mono-nerd-font"
-cask "font-blex-mono-nerd-font"
-cask "font-caskaydia-cove-nerd-font"
-cask "font-caskaydia-mono-nerd-font"
-cask "font-code-new-roman-nerd-font"
-cask "font-comic-shanns-mono-nerd-font"
-cask "font-commit-mono-nerd-font"
-cask "font-cousine-nerd-font"
-cask "font-d2coding-nerd-font"
-cask "font-daddy-time-mono-nerd-font"
-cask "font-dejavu-sans-mono-nerd-font"
-cask "font-droid-sans-mono-nerd-font"
-cask "font-envy-code-r-nerd-font"
-cask "font-fantasque-sans-mono-nerd-font"
-cask "font-fira-code-nerd-font"
-cask "font-fira-mono-nerd-font"
-cask "font-geist-mono-nerd-font"
-cask "font-go-mono-nerd-font"
-cask "font-gohufont-nerd-font"
-cask "font-hack-nerd-font"
-cask "font-hasklug-nerd-font"
-cask "font-heavy-data-nerd-font"
-cask "font-hurmit-nerd-font"
-cask "font-im-writing-nerd-font"
-cask "font-inconsolata-go-nerd-font"
-cask "font-inconsolata-lgc-nerd-font"
-cask "font-inconsolata-nerd-font"
-cask "font-intone-mono-nerd-font"
-cask "font-iosevka-nerd-font"
-cask "font-iosevka-term-nerd-font"
-cask "font-iosevka-term-slab-nerd-font"
-cask "font-jetbrains-mono-nerd-font"
-cask "font-lekton-nerd-font"
-cask "font-liberation-nerd-font"
-cask "font-lilex-nerd-font"
-cask "font-m+-nerd-font"
-cask "font-martian-mono-nerd-font"
-cask "font-meslo-lg-nerd-font"
-cask "font-monaspice-nerd-font"
-cask "font-monocraft-nerd-font"
-cask "font-monofur-nerd-font"
-cask "font-monoid-nerd-font"
-cask "font-mononoki-nerd-font"
-cask "font-noto-nerd-font"
-cask "font-open-dyslexic-nerd-font"
-cask "font-overpass-nerd-font"
-cask "font-profont-nerd-font"
-cask "font-proggy-clean-tt-nerd-font"
-cask "font-recursive-mono-nerd-font"
-cask "font-roboto-mono-nerd-font"
-cask "font-sauce-code-pro-nerd-font"
-cask "font-shure-tech-mono-nerd-font"
-cask "font-space-mono-nerd-font"
-cask "font-symbols-only-nerd-font"
-cask "font-terminess-ttf-nerd-font"
-cask "font-tinos-nerd-font"
-cask "font-ubuntu-mono-nerd-font"
-cask "font-ubuntu-nerd-font"
-cask "font-ubuntu-sans-nerd-font"
-cask "font-victor-mono-nerd-font"
-cask "font-zed-mono-nerd-font"
-cask "iterm2"
-cask "microsoft-auto-update"
-cask "microsoft-teams"
-cask "postman"
-cask "redis-stack"
-cask "redis-stack-redisinsight"
-cask "redis-stack-server"
-cask "slack"
-cask "sourcetree"
-cask "spotify"
-cask "visual-studio-code"
+# Open source IDE for exploring and testing APIs
+cask "bruno"
+# Terminal-based AI coding assistant
+cask "claude-code"
+# OpenJDK distribution from Amazon
+cask "corretto@21"
+# Terminal emulator that uses platform-native UI and GPU acceleration
+cask "ghostty"
+# GPU-based terminal emulator
+cask "kitty"
+# Email client
+cask "microsoft-outlook"
+# GUI for streamlined Redis application development
+cask "redis-insight"
+# GPU-accelerated cross-platform terminal emulator and multiplexer
 cask "wezterm"
-vscode "a-h.templ"
-vscode "astro-build.astro-vscode"
-vscode "asvetliakov.vscode-neovim"
-vscode "bradlc.vscode-tailwindcss"
-vscode "dbaeumer.vscode-eslint"
-vscode "deque-systems.vscode-axe-linter"
-vscode "docker.docker"
-vscode "esbenp.prettier-vscode"
-vscode "github.copilot"
-vscode "github.copilot-chat"
-vscode "golang.go"
-vscode "joffreykern.markdown-toc"
-vscode "ms-azuretools.vscode-containers"
-vscode "ms-azuretools.vscode-docker"
-vscode "ms-playwright.playwright"
-vscode "ms-vscode.makefile-tools"
-vscode "ms-vscode.notepadplusplus-keybindings"
-vscode "plibither8.remove-comments"
-vscode "redhat.vscode-xml"
-vscode "stivo.tailwind-fold"
-vscode "tamasfe.even-better-toml"
-vscode "tomphilbin.gruvbox-themes"
-vscode "vintharas.learn-vim"
-vscode "vitest.explorer"
-vscode "vscode-icons-team.vscode-icons"
-vscode "vscodevim.vim"
-go "golang.org/x/tools/gopls"
-go "honnef.co/go/tools/cmd/staticcheck"
-go "github.com/wailsapp/wails/v2/cmd/wails"
+uv "jiratui", with: ["textual==7.5.0"]
+npm "corepack"
