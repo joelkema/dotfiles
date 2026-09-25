@@ -6,10 +6,17 @@ set -Eeuo pipefail
 (set -o pipefail) 2>/dev/null || true
 
 # -------------------- flags --------------------
+# Unknown flags are rejected on purpose: a typo like --dryrun (missing
+# hyphen) used to be silently ignored, which ran the real install instead
+# of a dry run with zero warning.
 DRY_RUN=false
 for arg in "$@"; do
   case "$arg" in
     -n|--dry-run) DRY_RUN=true ;;
+    *)
+      echo "Unknown flag: $arg (did you mean --dry-run?)" >&2
+      exit 1
+      ;;
   esac
 done
 
