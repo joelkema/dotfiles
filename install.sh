@@ -35,7 +35,8 @@ ensure_brew_macos() {
 apply_brewfile_macos() {
   step "Applying Brewfile (macOS)"
   if [[ -f Brewfile ]]; then
-    run "brew tap Homebrew/bundle || true"
+    # brew bundle is built into core brew since Homebrew 2.7;
+    # the homebrew/bundle tap is deprecated and empty.
     run "brew bundle install"
     ok "Brewfile installed"
   else
